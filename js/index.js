@@ -38,6 +38,43 @@ b1_bt3.onclick = function () {
         b1_content3.classList.remove("active");
     }
 };
+// bài 2
+
+// scripts.js
+
+let currentSlide = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll(".carousel-item");
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+
+    // Reset all slides' opacity to 0
+    slides.forEach((slide) => (slide.style.opacity = "0"));
+
+    // Show the current slide
+    slides[currentSlide].style.opacity = "1";
+
+    // Move carousel to current slide
+    const carouselInner = document.querySelector(".carousel-inner");
+    carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+// Initial call to show the first slide
+showSlide(currentSlide);
 
 // bai3
 
